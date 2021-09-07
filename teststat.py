@@ -46,10 +46,4 @@ class TestStat:
 
 if __name__ == '__main__':
     test_stat_obj = TestStat()
-    df_1 = test_stat_obj.create_dataframe("/Users/atharvkolhar/PycharmProjects/TestStat/test_results_1.csv")
-    df_2 = test_stat_obj.create_dataframe("/Users/atharvkolhar/PycharmProjects/TestStat/test_results_2.csv")
 
-    list_dfs = [df_1, df_2, df_2, df_1]
-
-    res_df = test_stat_obj.merge_dataframes(list_dfs)
-    print(res_df)
