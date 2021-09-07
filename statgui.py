@@ -10,6 +10,7 @@ matplotlib.use('TkAgg')
 class StatGUI:
     def __init__(self, main_window, test_dataframe):
         self.main_window = main_window
+        self.main_window.geometry("700x500")
         self.test_dataframe = test_dataframe
 
         self.testcase_list = self.get_testcase_names()
@@ -41,7 +42,7 @@ class StatGUI:
         ind = self.testcase_list.index(testcase_name)
         y = (self.test_dataframe.loc[ind]).tolist()[1:]
 
-        fig = Figure(figsize=(6, 6))
+        fig = Figure(figsize=(4, 4))
         a = fig.add_subplot(111)
         a.scatter(x, y, color='red')
         a.invert_yaxis()
@@ -51,6 +52,6 @@ class StatGUI:
         a.set_xlabel("Runs", fontsize=14)
 
         canvas = FigureCanvasTkAgg(fig, master=self.main_window)
-        canvas.get_tk_widget().grid(column=30, row=50)
+        canvas.get_tk_widget().grid(column=6, row=50, columnspan=20)
         canvas.draw()
 
