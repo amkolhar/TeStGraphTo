@@ -2,6 +2,7 @@
 
 import matplotlib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.widgets import Cursor
 from matplotlib.figure import Figure
 from tkinter import *
 matplotlib.use('TkAgg')
@@ -43,14 +44,14 @@ class StatGUI:
         y = (self.test_dataframe.loc[ind]).tolist()[1:]
 
         fig = Figure(figsize=(4, 4))
-        a = fig.add_subplot(111)
-        a.scatter(x, y, color='red')
-        a.invert_yaxis()
+        stat_graph = fig.add_subplot(111)
+        stat_graph.scatter(x, y, color='blue')
+        stat_graph.invert_yaxis()
 
-        a.set_title(testcase_name, fontsize=16)
-        a.set_ylabel("Status", fontsize=14)
-        a.set_xlabel("Runs", fontsize=14)
-
+        stat_graph.set_title(testcase_name, fontsize=16)
+        stat_graph.set_ylabel("Status", fontsize=14)
+        stat_graph.set_xlabel("Runs", fontsize=14)
+        
         canvas = FigureCanvasTkAgg(fig, master=self.main_window)
         canvas.get_tk_widget().grid(column=6, row=50, columnspan=20)
         canvas.draw()

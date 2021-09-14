@@ -17,11 +17,16 @@ class TestStat:
         :return: pandas dataframe
         """
 
+        test_run_name = test_file.split('/')[-1].split('.')[0].replace('test_results_', "")
+
         # Create a Pandas Dataframe
         test_dataframe = pd.read_csv(test_file)
 
         # Remove the Columns = ['% Rate', 'Test Suite']
         test_dataframe = test_dataframe.drop(columns=['% Rate', 'Test Suite'])
+
+        # Rename the the test_result column to the run name
+        test_dataframe = test_dataframe.rename(columns={"Test Result": test_run_name})
 
         # Sort the Column = Test Case Name
         test_dataframe = test_dataframe.sort_values(by=['Test Case Name'])
