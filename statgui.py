@@ -11,7 +11,7 @@ matplotlib.use('TkAgg')
 class StatGUI:
     def __init__(self, main_window, test_dataframe):
         self.main_window = main_window
-        self.main_window.geometry("700x500")
+        self.main_window.geometry("1000x500")
         self.test_dataframe = test_dataframe
 
         self.testcase_list = self.get_testcase_names()
@@ -27,7 +27,7 @@ class StatGUI:
         self.testcase_name.grid(column=6, row=5, columnspan=10)
 
         self.plot_graph = Button(self.main_window, text="Plot the Graph", command=self.plot_the_scatter_plot)
-        self.plot_graph.grid(column=25, row=25, columnspan=5)
+        self.plot_graph.grid(column=6, row=25, columnspan=5)
 
         self.close_button = Button(self.main_window, text="Close", command=self.main_window.quit)
         self.close_button.grid(column=100, row=100, columnspan=5)
@@ -43,7 +43,7 @@ class StatGUI:
         ind = self.testcase_list.index(testcase_name)
         y = (self.test_dataframe.loc[ind]).tolist()[1:]
 
-        fig = Figure(figsize=(4, 4))
+        fig = Figure(figsize=(8, 4))
         stat_graph = fig.add_subplot(111)
         stat_graph.scatter(x, y, color='blue')
         stat_graph.invert_yaxis()
