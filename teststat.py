@@ -10,7 +10,8 @@ class TestStat:
     def __init__(self):
         pass
 
-    def create_dataframe(self, test_file):
+    @staticmethod
+    def create_dataframe(test_file):
         """
 
         :param test_file: .csv file
@@ -34,7 +35,8 @@ class TestStat:
         # print(test_dataframe)
         return test_dataframe
 
-    def merge_dataframes(self, list_of_dfs):
+    @staticmethod
+    def merge_dataframes(list_of_dfs):
         if len(list_of_dfs) < 2:
             return -1
 
