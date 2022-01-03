@@ -2,7 +2,6 @@
 
 import matplotlib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.widgets import Cursor
 from matplotlib.figure import Figure
 from tkinter import *
 matplotlib.use('TkAgg')
