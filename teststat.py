@@ -9,9 +9,10 @@ pd.set_option('display.max_rows', None)
 
 yaml = YAML()
 
+
 class TestStat:
     def __init__(self):
-        pass
+        self.config = self.read_yaml_config()
 
     def read_yaml_config(self):
         with open('./data/config.yaml', 'r') as config:
@@ -30,10 +31,8 @@ class TestStat:
         # Create a Pandas Dataframe
         test_dataframe = pd.read_csv(test_file)
 
-        config = self.read_yaml_config()
-
-        # Remove the Columns = ['% Rate', 'Test Suite']
-        test_dataframe = test_dataframe[config['columns']]
+        # Select the columns using the config file
+        test_dataframe = test_dataframe[self.config['columns']]
 
         # Rename the the test_result column to the run name
         test_dataframe = test_dataframe.rename(columns={"Test Result": test_run_name})

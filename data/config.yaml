@@ -1,3 +1,6 @@
 # Copyright 2022 Atharv Kolhar
 
-columns: ['Test Case Name', 'Test Result']
+columns:
+  ['Test Case Name', 'Test Result'] # required columns to plot the graphs
+source:
+  '/Users/atharvkolhar/PycharmProjects/TestStat/test_result_dir/' # Place to locate the log files

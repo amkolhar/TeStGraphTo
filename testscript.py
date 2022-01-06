@@ -10,7 +10,7 @@ class TestScript:
     def __init__(self):
         self.test_stat_obj = teststat.TestStat()
         self.dir_path = os.path.dirname(os.path.abspath(__file__))
-        self.test_result_dir = self.dir_path + '/test_result_dir/'
+        self.test_result_dir = self.test_stat_obj.config['source']
         self.test_files = self.create_test_file_list()
         self.test_df = self.create_test_df()
 
