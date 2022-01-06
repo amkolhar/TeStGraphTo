@@ -1,17 +1,24 @@
 # Copyright 2021 AtharvKolhar
 
 import pandas as pd
+from ruamel.yaml import YAML
+
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
+yaml = YAML()
 
 class TestStat:
     def __init__(self):
         pass
 
-    @staticmethod
-    def create_dataframe(test_file):
+    def read_yaml_config(self):
+        with open('./data/config.yaml', 'r') as config:
+            data = yaml.load(config)
+        return data
+
+    def create_dataframe(self, test_file):
         """
 
         :param test_file: .csv file
@@ -23,8 +30,10 @@ class TestStat:
         # Create a Pandas Dataframe
         test_dataframe = pd.read_csv(test_file)
 
+        config = self.read_yaml_config()
+
         # Remove the Columns = ['% Rate', 'Test Suite']
-        test_dataframe = test_dataframe.drop(columns=['% Rate', 'Test Suite'])
+        test_dataframe = test_dataframe[config['columns']]
 
         # Rename the the test_result column to the run name
         test_dataframe = test_dataframe.rename(columns={"Test Result": test_run_name})
