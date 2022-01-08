@@ -1,4 +1,4 @@
-# Copyright 2021 AtharvKolhar
+# Copyright 2022 AtharvKolhar
 
 import matplotlib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
